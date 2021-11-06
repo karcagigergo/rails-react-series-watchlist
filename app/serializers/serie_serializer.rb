@@ -1,5 +1,5 @@
 class SerieSerializer
-  include JSONAPI::Serializer
+  include FastJsonapi::ObjectSerializer
   attributes :name, :image_url, :slug, :description
 
   has_many :reviews

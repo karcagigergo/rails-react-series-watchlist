@@ -1,7 +1,9 @@
 require 'open-uri'
 require 'pry-byebug'
 
-series = [
+Serie.destroy_all
+
+series_titles = [
   "game of thrones",
   "ozark",
   "sons of anarchy",
@@ -11,13 +13,19 @@ series = [
   "rick and morty"
 ]
 
-series.each do |serie|
+series_titles.each do |serie|
   omdb_endpoint = "http://www.omdbapi.com/?t=#{serie}&apikey=afc205b"
 
   serialized_data = URI.open(omdb_endpoint).read
   result = JSON.parse(serialized_data)
-
-  Serie.create(name: result['Title'], description: result['Plot'], image_url: result['Poster'])
+  
+  Serie.create(
+    {
+    name: result['Title'], 
+    description: result['Plot'], 
+    image_url: result['Poster']
+    }
+  )
 end
 
 reviews = Review.create!([
