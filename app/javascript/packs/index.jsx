@@ -10,9 +10,7 @@ import App from '../components/app.js'
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <BrowserRouter>
-      <Routes>
-        <Route path="//*" element={<App />} />
-      </Routes>
+      <App />
     </BrowserRouter>,
     document.body.appendChild(document.createElement('div')),
   )
